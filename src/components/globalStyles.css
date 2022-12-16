@@ -1,0 +1,157 @@
+.yellow-btn.MuiButton-root,
+.yellow-btn.MuiButton-root:hover {
+  background-color: #f9bf34;
+  color: #260c00;
+  border: none;
+  font-weight: 600;
+  padding: 6px 15px;
+  width: max-content;
+}
+.send-message .yellow-btn {
+  color: black !important;
+}
+
+.generic-yellow-txt,
+.generic-yellow-txt a,
+.generic-yellow-txt.MuiTypography-span {
+  color: #f9bf34;
+  text-decoration: none;
+}
+
+.generic-yellow-txt.smaller-text {
+  color: #fff4d6;
+  font-weight: bold;
+}
+
+.send-message .yellow-btn.Mui-disabled {
+  color: white !important;
+}
+
+body {
+  background-color: #260c00 !important;
+}
+
+.post-card.MuiPaper-root {
+  border: none;
+}
+
+.logout-btn.MuiButton-root.MuiButton-sizeMedium {
+  background-color: #f9bf34;
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.tabs-select button.Mui-selected {
+  color: #260c00;
+}
+
+.generic-link,
+.generic-link strong,
+.view-user {
+  color: #260c00;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.yellow-text {
+  color: #a17200;
+  font-weight: bold;
+}
+
+.facts-link.MuiLink-underlineAlways {
+  text-decoration: none;
+}
+
+.view-user {
+  font-size: 14px;
+}
+
+.create-bar.MuiCard-root,
+.find-users-stack,
+.light-yellow-container.MuiPaper-root {
+  background-color: #fff4d6;
+}
+
+.copyright-bar.MuiPaper-rounded.MuiCard-root {
+  background-color: #260c00;
+}
+.find-users-stack,
+.copyright-bar,
+.light-yellow-container.MuiPaper-root {
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.end-of-page.MuiTypography-h5,
+.find-facts-txt.MuiButton-text {
+  color: #fff4d6;
+}
+
+.find-facts-txt.MuiButton-text {
+  border: 1px solid #f9bf34;
+  font-weight: bold;
+}
+
+.message-field,
+.input-field-txt input.MuiInputBase-input {
+  background-color: #fff4d6 !important;
+  border: 0;
+  border-radius: 10px;
+}
+
+.input-field-txt label.MuiInputLabel-formControl[data-shrink='true'] {
+  color: #f9bf34;
+  font-weight: 700;
+  font-size: 20px;
+  position: relative;
+  top: 10px;
+  left: -10px;
+  margin-top: 10px;
+}
+
+.search-field {
+  background-color: #fff4d6;
+  border-radius: 10px;
+}
+
+.input-field-txt.search-field > label.Mui-focused {
+  display: none;
+}
+
+.find-facts-search fieldset {
+  border: none;
+}
+
+.find-facts-search input {
+  color: #260c00;
+  font-weight: normal;
+  background-color: #f9bf34;
+  border-radius: 10px;
+}
+
+.find-facts-search input::placeholder {
+  color: #260c00;
+}
+
+.find-facts-mobile.MuiIconButton-sizeMedium {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .find-facts-txt.MuiButton-textSizeMedium {
+    display: none;
+  }
+  .find-facts-mobile.MuiIconButton-sizeMedium {
+    display: block;
+  }
+
+  .hide-on-mobile.MuiTypography-h6,
+  .hide-on-mobile.MuiTypography-subtitle2 {
+    display: none;
+  }
+
+  .icon-nav-bar.MuiIconButton-root {
+    margin: 0;
+  }
+}
