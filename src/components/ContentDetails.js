@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Typography, Chip } from '@mui/material';
 import React from 'react';
 import HorizontalStack from './util/HorizontalStack';
 import Moment from 'react-moment';
@@ -24,7 +24,8 @@ const ContentDetails = ({ username, createdAt, edited, preview, promoted }) => {
         {!preview && (
           <>
             {' '}
-            · <Moment fromNow>{createdAt}</Moment> {edited && <>(Edited)</>} {promoted === "Promoter" && <>(Promoted)</>}
+            · <Moment fromNow>{createdAt}</Moment> {edited && <>(Edited)</>} {promoted === "Promoter" && <>
+            <Chip label="Promoted" color="warning" /></>}
           </>
         )}
       </Typography>
