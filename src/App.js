@@ -50,7 +50,7 @@ function App() {
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/signup" element={<SignupView />} />
-          <Route path="/externalApi" element={<ExternalApiSearch />} />
+          <Route path="/externalSearch" element={<ExternalApiSearch />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

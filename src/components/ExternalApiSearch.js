@@ -26,13 +26,13 @@ const ExternalApiSearch = () => {
     if (e.target.value === '') {
       setQuestions([]);
       sethidden(true);
-      navigate('/externalApi');
+      navigate('/externalSearch');
     } else {
       searchFood(e.target.value).then((resp) => {
         setQuestions(resp.items);
         console.log(questions);
         setSearch(e.target.value)
-        navigate('/externalApi?' + new URLSearchParams({"criteria": search}));
+        navigate('/externalSearch?' + new URLSearchParams({"criteria": search}));
       });
     }
   };

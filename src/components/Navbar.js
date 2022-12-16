@@ -141,7 +141,7 @@ const Navbar = () => {
                 className="find-facts-txt"
                 variant="text"
                 sx={{ minWidth: 80 }}
-                href="/externalApi"
+                href="/externalSearch"
               >
                 {' '}
                 <AiFillBulb
@@ -153,7 +153,7 @@ const Navbar = () => {
               <IconButton
                 className="find-facts-mobile icon-nav-bar"
                 component={Link}
-                to={'/externalApi'}
+                to={'/externalSearch'}
               >
                 <AiFillBulb
                   size={20}
@@ -170,7 +170,7 @@ const Navbar = () => {
                 className="find-facts-txt"
                 variant="text"
                 sx={{ minWidth: 80 }}
-                href="/externalApi"
+                href="/externalSearch"
               >
                 {' '}
                 <AiFillBulb
@@ -182,7 +182,7 @@ const Navbar = () => {
               <IconButton
                 className="find-facts-mobile icon-nav-bar"
                 component={Link}
-                to={'/externalApi'}
+                to={'/externalSearch'}
               >
                 <AiFillBulb
                   size={20}
