@@ -107,6 +107,7 @@ const PostCard = (props) => {
                 createdAt={post.createdAt}
                 edited={post.edited}
                 preview={preview === 'secondary'}
+                promoted={post.poster.role}
               />
               <Box>
                 {user &&
