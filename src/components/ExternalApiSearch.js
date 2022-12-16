@@ -88,7 +88,7 @@ const ExternalApiSearch = () => {
               );
             })}
           </List>
-          <Button onClick={HandleDetailsRequest}>Details</Button>
+          <Button onClick={HandleDetailsRequest} className="yellow-btn">Details</Button>
         </Stack>
       </Card>
     </Container>

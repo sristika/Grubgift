@@ -199,10 +199,11 @@ const PostBrowser = (props) => {
                      posts.length > 0 && (
                          <Stack pt={2} pb={6} alignItems="center" spacing={2}>
                              <Button onClick={handleButtonClick}
-                                     variant="contained">
+                                     variant="contained" className="yellow-btn">
                                  Load more
                              </Button>
-                             <Button variant="text" size="small" onClick={handleBackToTop}>
+                             <Button variant="text" size="small" onClick={handleBackToTop}
+                             className="generic-yellow-txt smaller-text">
                                  Back to top
                              </Button>
                          </Stack>
