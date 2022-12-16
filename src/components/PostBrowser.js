@@ -1,9 +1,9 @@
-import { Button, Card, Stack, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import React, { useEffect, useState } from 'react';
-import {useParams, useSearchParams} from 'react-router-dom';
-import { getPosts, getUserLikedPosts } from '../api/posts';
-import { isLoggedIn } from '../helpers/authHelper';
+import {Button, Card, Stack, Typography} from '@mui/material';
+import {Box} from '@mui/system';
+import React, {useEffect, useState} from 'react';
+import {useSearchParams} from 'react-router-dom';
+import {getPosts, getUserLikedPosts} from '../api/posts';
+import {isLoggedIn} from '../helpers/authHelper';
 import CreatePost from './CreatePost';
 import Loading from './Loading';
 import PostCard from './PostCard';
@@ -13,7 +13,7 @@ import HorizontalStack from './util/HorizontalStack';
 const PostBrowser = (props) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [end, setEnd] = useState(false);
     const [sortBy, setSortBy] = useState('-createdAt');
     const [count, setCount] = useState(0);
@@ -24,13 +24,10 @@ const PostBrowser = (props) => {
     const searchExists =
         search && search.get('search') && search.get('search').length > 0;
 
-    const fetchPosts = async () => {
+    const fetchPosts = async (paginate) => {
         setLoading(true);
-        const newPage = page + 1;
-        setPage(newPage);
-
         let query = {
-            page: newPage,
+            page: page,
             sortBy,
         };
 
@@ -55,26 +52,32 @@ const PostBrowser = (props) => {
         return data;
     };
 
+    const dataLoaded = (data) => {
+        if (data.data.length < 10) {
+            setEnd(true);
+        }
+        setLoading(false);
+        if (!data.error) {
+            setPosts([...posts, ...data.data]);
+            setCount(data.count);
+        }
+    }
     useEffect(() => {
-        fetchPosts().then(data => {
-            setPosts([]);
-            setCount(0);
-            setPage(0);
-            setEnd(false);
-            if (data.data.length < 10) {
-                setEnd(true);
-            }
-            setLoading(false);
-            if (!data.error) {
-                setPosts([...posts, ...data.data]);
-                setCount(data.count);
-            }
+        setPosts([]);
+        setCount(0);
+        setPage(1);
+        setEnd(false);
+        fetchPosts(false).then(data => {
+            const newPage = page + 1;
+            setPage(newPage);
+            console.log(newPage);
+            dataLoaded(data);
         });
     }, [props.profileUser, sortBy, effect]);
 
     useEffect(() => {
         setPosts([]);
-        setPage(0);
+        setPage(1);
         setEnd(false);
         setEffect(!effect);
     }, [props.profileUser, search]);
@@ -88,7 +91,7 @@ const PostBrowser = (props) => {
             }
         });
         setPosts([]);
-        setPage(0);
+        setPage(1);
         setEnd(false);
         setSortBy(newSortBy);
     };
@@ -102,6 +105,15 @@ const PostBrowser = (props) => {
                             top: 0,
                             behavior: 'smooth',
                         });
+    };
+
+    const handleButtonClick = () => {
+        fetchPosts(true).then(data => {
+            const newPage = page + 1;
+            setPage(newPage);
+            console.log(newPage);
+            dataLoaded(data);
+        });
     };
 
     const contentTypeSorts = {
@@ -124,7 +136,7 @@ const PostBrowser = (props) => {
             <Stack spacing={2}>
                 <Card className="create-bar">
                     <HorizontalStack justifyContent="space-between">
-                        {props.createPost && <CreatePost />}
+                        {props.createPost && <CreatePost/>}
                         <SortBySelect
                             onSortBy={handleSortBy}
                             sortBy={sortBy}
@@ -157,7 +169,7 @@ const PostBrowser = (props) => {
                     />
                 ))}
 
-                {loading && <Loading />}
+                {loading && <Loading/>}
                 {end ? (
                     <Stack py={5} alignItems="center">
                         <Typography
@@ -186,7 +198,8 @@ const PostBrowser = (props) => {
                      posts &&
                      posts.length > 0 && (
                          <Stack pt={2} pb={6} alignItems="center" spacing={2}>
-                             <Button onClick={fetchPosts} variant="contained">
+                             <Button onClick={handleButtonClick}
+                                     variant="contained">
                                  Load more
                              </Button>
                              <Button variant="text" size="small" onClick={handleBackToTop}>

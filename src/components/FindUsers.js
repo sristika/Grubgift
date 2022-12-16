@@ -12,13 +12,14 @@ const FindUsers = (props) => {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState(null);
 
-  const fetchAllUsrs = async () => {
+  const fetchAllUsers = async () => {
     setLoading(true);
     return await getRandomUsers({ size: 6 });
   };
 
+
   useEffect(() => {
-    fetchAllUsrs().then((data) => {
+    fetchAllUsers().then((data) => {
       if (props.profile) {
         const filteredDataArray = data.filter(function (el) {
           return el.username !== props.profile.user.username;
@@ -32,7 +33,7 @@ const FindUsers = (props) => {
   }, [props.profile]);
 
   const handleClick = () => {
-    fetchAllUsrs().then((data) => {
+    fetchAllUsers().then((data) => {
       if (props.profile) {
         const filteredDataArray = data.filter(function (el) {
           return el.username !== props.profile.user.username;
@@ -74,9 +75,9 @@ const FindUsers = (props) => {
                 <UserAvatar width={30} height={30} username={user.username} />
                 <Typography>{user.username}</Typography>
               </HorizontalStack>
-              <Link className="view-user" to={'/users/' + user.username}>
+              <a className="view-user" href={'/users/' + user.username}>
                 View
-              </Link>
+              </a>
             </HorizontalStack>
           ))
         )}
