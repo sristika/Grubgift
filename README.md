@@ -1,6 +1,12 @@
 # GrubGift
 GrubGift is a fully-featured social media web application, built with the MERN stack.  
 
+# Team Members
+- Satvik Khetan
+- Bobby Doshi
+- Sristika Bora
+- Abdul Haseeb Hussain Mohammed
+
 Deployed at: https://grubgift.netlify.app/
 
 ![GIF of GrubGift walkthrough](https://user-images.githubusercontent.com/22213237/207124947-22b921ed-ab45-42cd-8fbf-9e69909f5899.gif)
