@@ -15,18 +15,24 @@ import {
   Stack,
   Container,
 } from '@mui/material';
+import {useNavigate} from 'react-router-dom';
 
 const ExternalApiSearch = () => {
   const [questions, setQuestions] = useState([]);
+  const [search, setSearch] = useState('');
+  const navigate = useNavigate();
   let [ hidden, sethidden ] = useState(true);
   const handleSearchChange = (e) => {
     if (e.target.value === '') {
       setQuestions([]);
       sethidden(true);
+      navigate('/externalApi');
     } else {
       searchFood(e.target.value).then((resp) => {
         setQuestions(resp.items);
         console.log(questions);
+        setSearch(e.target.value)
+        navigate('/externalApi?' + new URLSearchParams({"criteria": search}));
       });
     }
   };
